@@ -1,0 +1,54 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Contact {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  subject   String
+  message   String
+  isRead    Boolean  @default(false)
+  readAt     DateTime?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([email])
+  @@index([createdAt])
+}
+
+
+model Feedback {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  rating    Int      @db.SmallInt
+  message   String
+  company   String?
+  approved  Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([approved])
+  @@index([rating])
+  @@index([createdAt])
+}
+
+model Admin {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  role      Role     @default(ADMIN)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum Role {
+  ADMIN
+}
+
