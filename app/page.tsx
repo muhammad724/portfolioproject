@@ -11,10 +11,15 @@ import { TestimonialsSlider } from "@/app/components/TestimonialsSlider";
 import { ContactSection } from "@/app/components/ContactSection";
 import { Footer } from "@/app/components/Footer";
 
+
+
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-primary-bg text-primary-light scroll-smooth">
       <Navbar />
+
+
 
 
       <div className="relative overflow-hidden">

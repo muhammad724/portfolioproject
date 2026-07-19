@@ -1,5 +1,12 @@
 'use client';
 
+import { verifyRecaptcha } from "@/lib/recaptcha";
+import {
+  checkRateLimit,
+  increaseAttempts,
+  resetAttempts,
+} from "@/lib/rate-limit";
+
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
@@ -16,15 +23,9 @@ import {
 
 
 const loginSchema = z.object({
-
-  email: z
-    .string()
-    .email("Please enter a valid email."),
-
-  password: z
-    .string()
-    .min(1, "Password is required"),
-
+  email: z.string().email(),
+  password: z.string().min(1),
+  token: z.string().min(1),
 });
 
 
@@ -444,7 +445,16 @@ export default function AdminLoginPage() {
 
 
             </div>
-
+  <p className="mt-6 text-center text-sm text-white/60">
+            Already have an account?{" "}
+            <button
+              type="button"
+              onClick={() => router.push("/login")}
+              className="text-[#C9A24D] hover:underline"
+            >
+              Login
+            </button>
+          </p>
 
 
 

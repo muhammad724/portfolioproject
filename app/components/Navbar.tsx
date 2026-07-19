@@ -9,7 +9,7 @@ const navLinks = [
   { label: 'Skills', href: '#skills' },
   { label: 'Projects', href: '#projects' },
   { label: 'Contact', href: '#contact' },
-  { label: 'Admin', href: '/admin/login' },
+  { label: 'Admin', href: '/login' },
 ];
 
 function usePrefersReducedMotion() {

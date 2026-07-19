@@ -1,7 +1,8 @@
+
 import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
+import Providers from "./providers";
 import "./globals.css";
-import { ThemeProvider } from "@/app/components/ThemeProvider";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -61,9 +62,10 @@ export default function RootLayout({
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
         />
       </head>
+
       <body className="h-full antialiased bg-white text-gray-900 dark:bg-primary-bg dark:text-primary-light transition-colors duration-300">
-        <ThemeProvider>{children}</ThemeProvider>
-      </body>
+  <Providers>{children}</Providers>
+</body>
     </html>
   );
 }
